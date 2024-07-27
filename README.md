@@ -1,4 +1,4 @@
-**SarahBot**
+**SarahBot - In Development** 
 ================
 
 Revitalize Your Server with the Power of SarahBot
