@@ -1,22 +1,25 @@
-SarahBot
-
+**SarahBot**
 ================
 
-Revitalize Seu Servidor com o Poder do SarahBot
+Revitalize Your Server with the Power of SarahBot
+-----------------------------------------
 
-Está cansado de bots entediantes e limitados? Quer transformar seu servidor em um local vibrante e divertido? O SarahBot é a solução perfeita! Nosso bot multifuncional, multilíngue, personalizável e modular é projetado para tornar seu servidor o melhor lugar para se divertir e conversar.
+Are you tired of uninspired and limited bots? Do you want to transform your server into an energetic and engaging community? SarahBot is the perfect solution! Our multifunctional, multilingual, customizable, and modifiable bot is designed to make your server the go-to destination for entertainment and conversation.
 
-Objetivos das Características Principais para cumprir:
+**Core Features**
+----------------
 
-    Multifuncional: O SarahBot oferece uma variedade de funções para atender às necessidades de seu servidor, desde jogos e entretenimento até ferramentas de gerenciamento e utilitários.
-    Multilíngue: Nosso bot é capaz de se comunicar em vários idiomas, garantindo que todos os membros do seu servidor possam interagir e se divertir, independentemente de sua língua nativa.
-    Personalizável: O SarahBot é altamente personalizável, permitindo que você ajuste suas configurações e funções para atender às necessidades específicas do seu servidor.
-    Modular: Nosso bot é projetado de forma modular, o que significa que você pode facilmente adicionar ou remover funções e módulos à medida que suas necessidades mudam.
+* **Multifunctional**: SarahBot offers a range of functions to cater to your community's diverse needs, including games, entertainment, management tools, and utilities.
+* **Multilingual**: Our bot is capable of communicating in multiple languages, ensuring all members can engage and be part of the conversation, regardless of their native language.
+* **Customizable**: SarahBot is highly customizable, permitting you to adjust settings and functions to tailor it to your server's specific needs.
+* **Modifiable**: Our bot is designed with modularity in mind, allowing you to easily add or remove functions and modules as your community evolves.
 
-Transforme Seu Servidor em um Local de Diversão e Comunidade
+**Transform Your Server into a Hub of Fun and Community**
+--------------------------------------------------
 
-Com o SarahBot, você pode criar um servidor vibrante e acolhedor que atrai e retém membros. Nossa tecnologia avançada e interface intuitiva garantem que você possa se concentrar em criar uma comunidade incrível, enquanto nós cuidamos do resto.
+With SarahBot, you can create a vibrant and welcoming server that attracts and retains members. Our advanced technology and intuitive interface ensure you can focus on building a fantastic community while we take care of the rest.
 
-Experimente o SarahBot Hoje Mesmo!
+**Try SarahBot Today!**
+-------------------
 
-Não perca mais tempo com bots limitados e entediantes. Experimente o SarahBot hoje mesmo e descubra como podemos ajudar a transformar seu servidor em um local de diversão e comunidade!
+No more time-wasting on limited and uninspired bots! Try SarahBot today and discover how we can help transform your server into an electric hub of fun and community engagement!
