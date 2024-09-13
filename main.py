@@ -3,6 +3,8 @@ from discord import app_commands
 import random
 import asyncio
 import os
+import re
+import requests
 from groq import Groq
 
 # Inicialize o cliente Groq com sua chave API
@@ -53,7 +55,7 @@ async def on_message(message):
         if user_id not in aclient.conversations:
             aclient.conversations[user_id] = [{
                 "role": "system",
-                "content": "You are a helpful assistant. You reply with very short answers."
+                "content": "Você é um assistente útil. Responda com respostas curtas."
             }]
 
         user_message = message.content[len("!chat "):]
@@ -75,6 +77,31 @@ async def on_message(message):
         if user_id in aclient.conversations:
             await asyncio.sleep(1)  # Para evitar conflito de tempo
             asyncio.create_task(aclient.timeout_conversation(user_id))
+
+# Função para analisar links
+def analisar_link(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return "Este link é válido com o seguinte conteúdo: " + response.text[:200]
+        else:
+            return "Não foi possível acessar o conteúdo do link."
+    except requests.exceptions.RequestException as e:
+        return f"Erro ao acessar o link: {e}"
+
+# Detecta URLs nas mensagens
+url_pattern = r'(https?://[^\s]+)'
+
+@aclient.event
+async def on_message(message):
+    if message.author == aclient.user:
+        return
+
+    # Analisar links nas mensagens
+    urls = re.findall(url_pattern, message.content)
+    for url in urls:
+        link_analysis = analisar_link(url)
+        await message.channel.send(f"Análise do link {url}: {link_analysis}")
 
 # Comando para kickar um usuário
 @tree.command(
@@ -118,5 +145,39 @@ async def mute(interaction: discord.Interaction, member: discord.Member, reason:
         await interaction.response.send_message(f"{member.mention} foi mutado por {interaction.user.mention} por: {reason}")
     else:
         await interaction.response.send_message("Você não tem permissão para usar este comando.", ephemeral=True)
+
+# Comando para obter uma piada
+@tree.command(name='piada', description='Receba uma piada aleatória')
+async def joke(interaction: discord.Interaction):
+    response = requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"})
+    piada = response.json().get("joke", "Não consegui encontrar uma piada agora.")
+    await interaction.response.send_message(piada, ephemeral=True)
+
+# Comando para tocar música
+ytdl_format_options = {
+    'format': 'bestaudio/best',
+    'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+    'noplaylist': True,
+}
+
+ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
+
+@tree.command(name='play', description='Toque uma música do YouTube')
+async def play(interaction: discord.Interaction, url: str):
+    if interaction.user.voice is None:
+        await interaction.response.send_message("Você precisa estar em um canal de voz para tocar música.")
+        return
+    
+    voice_channel = interaction.user.voice.channel
+    if not aclient.voice_clients:
+        vc = await voice_channel.connect()
+    else:
+        vc = aclient.voice_clients[0]
+    
+    info = ytdl.extract_info(url, download=False)
+    source = discord.FFmpegPCMAudio(info['url'])
+    
+    vc.play(source)
+    await interaction.response.send_message(f"Tocando: {info['title']}")
 
 aclient.run('')  # Insira o token do bot aqui
